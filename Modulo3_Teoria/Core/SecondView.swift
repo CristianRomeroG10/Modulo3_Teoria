@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SecondView.swift
 //  Modulo3_Teoria
 //
 //  Created by Cristian guillermo Romero garcia on 16/09/26.
@@ -7,13 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class SecondView: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .blue
+        title = "Search"
     }
-
-
+    
 }
-
