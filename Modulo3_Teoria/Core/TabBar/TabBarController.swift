@@ -23,6 +23,7 @@ class TabBarController: UITabBarController {
         listNavigation.tabBarItem.title = "List"
         listNavigation.tabBarItem.image = UIImage(systemName: "list.bullet.circle")
         listNavigation.tabBarItem.selectedImage = UIImage(systemName: "list.bullet.circle.fill")
+        listNavigation.navigationBar.prefersLargeTitles = true
         
         //MARK: FirstView
         let searchViewController = SearchViewController()
@@ -30,6 +31,7 @@ class TabBarController: UITabBarController {
         searchNavigation.tabBarItem.title = "Search"
         searchNavigation.tabBarItem.image = UIImage(systemName: "magnifyingglass.circle")
         searchNavigation.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")
+        searchNavigation.navigationBar.prefersLargeTitles = true
         
         //MARK: FirstView
         let favoritesViewController = FavoritesViewController()
@@ -37,6 +39,7 @@ class TabBarController: UITabBarController {
         favoriteNavigation.tabBarItem.title = "Favorites"
         favoriteNavigation.tabBarItem.image = UIImage(systemName: "heart.circle")
         favoriteNavigation.tabBarItem.selectedImage = UIImage(systemName: "heart.circle.fill")
+        favoriteNavigation.navigationBar.prefersLargeTitles = false
         
         //MARK: ViewControllers ARRAY
         let viewControllers: [UIViewController] = [listNavigation, searchNavigation, favoriteNavigation]
