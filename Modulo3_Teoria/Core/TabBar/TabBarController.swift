@@ -16,33 +16,25 @@ class TabBarController: UITabBarController {
     
     func setUpViews(){
         
-        //MARK: FirstView
+        //MARK: characters view
         let listViewStoryboard = UIStoryboard(name: "ListViewStoryboard",bundle: nil)
         let listViewController = listViewStoryboard.instantiateViewController(withIdentifier: "ListVC") as! ListViewController
         let listNavigation = UINavigationController(rootViewController: listViewController)
-        listNavigation.tabBarItem.title = "List"
-        listNavigation.tabBarItem.image = UIImage(systemName: "list.bullet.circle")
-        listNavigation.tabBarItem.selectedImage = UIImage(systemName: "list.bullet.circle.fill")
+        listNavigation.tabBarItem.title = "Personajes"
+        listNavigation.tabBarItem.image = UIImage(systemName: "person.2.circle")
+        listNavigation.tabBarItem.selectedImage = UIImage(systemName: "person.2.circle.fill")
         listNavigation.navigationBar.prefersLargeTitles = true
         
-        //MARK: FirstView
-        let searchViewController = SearchViewController()
-        let searchNavigation = UINavigationController(rootViewController: searchViewController)
-        searchNavigation.tabBarItem.title = "Search"
-        searchNavigation.tabBarItem.image = UIImage(systemName: "magnifyingglass.circle")
-        searchNavigation.tabBarItem.selectedImage = UIImage(systemName: "magnifyingglass.circle.fill")
-        searchNavigation.navigationBar.prefersLargeTitles = true
-        
-        //MARK: FirstView
+        //MARK: FavoritesView
         let favoritesViewController = FavoritesViewController()
         let favoriteNavigation = UINavigationController(rootViewController: favoritesViewController)
-        favoriteNavigation.tabBarItem.title = "Favorites"
+        favoriteNavigation.tabBarItem.title = "Favoritos"
         favoriteNavigation.tabBarItem.image = UIImage(systemName: "heart.circle")
         favoriteNavigation.tabBarItem.selectedImage = UIImage(systemName: "heart.circle.fill")
         favoriteNavigation.navigationBar.prefersLargeTitles = false
         
         //MARK: ViewControllers ARRAY
-        let viewControllers: [UIViewController] = [listNavigation, searchNavigation, favoriteNavigation]
+        let viewControllers: [UIViewController] = [listNavigation, favoriteNavigation]
         self.viewControllers = viewControllers
         self.selectedIndex = 0
 //        self.tabBar.backgroundColor = .systemBackground
