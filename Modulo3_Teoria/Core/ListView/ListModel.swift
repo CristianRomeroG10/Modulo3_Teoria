@@ -24,7 +24,7 @@ struct charactersModel {
 
 class TableViewModel {
     let characters: [charactersModel]
-    
+    private(set) var filterCharacters: [charactersModel] = []
     init() {
         characters = [
             charactersModel(
@@ -135,6 +135,24 @@ class TableViewModel {
     }
     
     func getNumberOfRows() -> Int {
-        characters.count
+        filterCharacters.count
+    }
+    
+    func getCharacters(index: Int) -> charactersModel {
+        filterCharacters[index]
+    }
+    
+    func filterCharacters(with text: String) {
+        let query = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if query.isEmpty{
+            filterCharacters = characters
+        }else {
+            filterCharacters = characters.filter{
+                $0.fullName.localizedStandardContains(query) ||
+                $0.species.localizedStandardContains(query) ||
+                $0.occupation.localizedStandardContains(query)
+            }
+        }
     }
 }
