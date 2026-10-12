@@ -9,7 +9,7 @@ import UIKit
 
 class CharactersDetailViewController: UIViewController {
     
-    var character = charactersModel(image: "", name: "", lastName: "", species: "", occupation: "", description: "")
+    var character = charactersModel(image: "", alias: "", name: "", lastName: "", species: "", occupation: "", description: "")
     
     private let characterImage: UIImageView = {
         let image = UIImageView()
@@ -124,7 +124,7 @@ class CharactersDetailViewController: UIViewController {
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24)
         ])
-        title = character.name
+        title = character.alias
         characterImage.image = UIImage(named: character.image)
         fullNameLabel.text = "Nombre completo: \(character.fullName)"
         specieLabel.text = "Especie: \(character.species)"

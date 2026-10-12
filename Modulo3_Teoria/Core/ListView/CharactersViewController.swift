@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
+class CharactersViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
@@ -21,10 +21,13 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Personajes"
+        listTableView.rowHeight = UITableView.automaticDimension
+        listTableView.estimatedRowHeight = 64
         setUpView()
     }
     
     private func setUpView() {
+        listTableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.identifier)
         listTableView.delegate = self
         listTableView.dataSource = self
         // Si el buscador quedó como pie, lo retiramos de ahí.
@@ -52,7 +55,7 @@ class ListViewController: UIViewController {
     }
 }
 
-extension ListViewController: UITableViewDataSource {
+extension CharactersViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
@@ -62,20 +65,14 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: defaultCellIdentifier)
-        ?? UITableViewCell(style: .subtitle, reuseIdentifier: defaultCellIdentifier)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.identifier, for: indexPath) as? CharacterTableViewCell else { return UITableViewCell() }
         let character = viewModel.getCharacters(index: indexPath.row)
-        cell.textLabel?.text = character.fullName
-        cell.detailTextLabel?.text = "\(character.species) · \(character.occupation)"
-        cell.imageView?.image = UIImage(named: character.image)
-        cell.imageView?.layer.cornerRadius = 40
-        cell.imageView?.clipsToBounds = true
-        cell.accessoryType = .disclosureIndicator
+        cell.configure(with: character)
         return cell
     }
 }
 
-extension ListViewController: UITableViewDelegate {
+extension CharactersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let charactersDetailViewController = CharactersDetailViewController()
@@ -86,9 +83,10 @@ extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         "Bob Esponja"
     }
+    
 }
 
-extension ListViewController: UISearchBarDelegate {
+extension CharactersViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.filterCharacters(with: searchText)
         listTableView.reloadData()

@@ -9,6 +9,7 @@ import Foundation
 
 struct charactersModel {
     let image: String
+    let alias: String
     let name: String
     let lastName: String?
     var fullName: String {
@@ -29,7 +30,8 @@ class TableViewModel {
         characters = [
             charactersModel(
                 image: "arenita",
-                name: "Arenita",
+                alias: "Arenita",
+                name: "Sandra Jeniffer Olivia",
                 lastName: "Mejillas",
                 species: "Ardilla",
                 occupation: "Científica",
@@ -37,6 +39,7 @@ class TableViewModel {
             ),
             charactersModel(
                 image: "bobsponja",
+                alias: "Bob Esponja",
                 name: "Bob Esponja",
                 lastName: "Pantalones Cuadarados",
                 species: "Esponja marina",
@@ -45,6 +48,7 @@ class TableViewModel {
             ),
             charactersModel(
                 image: "calamardo",
+                alias: "Calamardo",
                 name: "Calamardo",
                 lastName: "Tentáculos",
                 species: "Pulpo",
@@ -53,6 +57,7 @@ class TableViewModel {
             ),
             charactersModel(
                 image: "chico_percebe",
+                alias: "Chico Percebe",
                 name: "Chico Percebe",
                 lastName: nil,
                 species: "Humano",
@@ -61,6 +66,7 @@ class TableViewModel {
             ),
             charactersModel(
                 image: "donCangrejo",
+                alias: "Don Cangrego",
                 name: "Eugenio Harold",
                 lastName: "Cangrejo",
                 species: "Cangrejo",
@@ -69,6 +75,7 @@ class TableViewModel {
             ),
             charactersModel(
                 image: "gary",
+                alias: "Gary",
                 name: "Gary",
                 lastName: nil,
                 species: "Caracol marino",
@@ -77,7 +84,8 @@ class TableViewModel {
             ),
             charactersModel(
                 image: "hombre_sirena",
-                name: "Hombre Sirena",
+                alias: "Sireno man",
+                name: "Sireno man",
                 lastName: nil,
                 species: "Humano",
                 occupation: "Superhéroe",
@@ -85,6 +93,7 @@ class TableViewModel {
             ),
             charactersModel(
                 image: "karen",
+                alias: "Karen",
                 name: "Karen",
                 lastName: "Plankton",
                 species: "Computadora",
@@ -93,14 +102,16 @@ class TableViewModel {
             ),
             charactersModel(
                 image: "larry",
-                name: "Larry",
-                lastName: nil,
+                alias: "Larry la langosta",
+                name: "Larry Timothy",
+                lastName: "Langosta",
                 species: "Langosta",
                 occupation: "Salvavidas",
                 description: "Larry es una langosta fuerte y deportista que suele encontrarse en la playa de Laguna Pegajosa. Trabaja como salvavidas y disfruta de las actividades al aire libre, el ejercicio y los retos físicos. Su energía y su confianza lo convierten en una figura conocida entre los habitantes de Fondo de Bikini.\nLe gusta mantenerse en forma y compartir su entusiasmo por el deporte con los demás. Aunque su apariencia puede resultar intimidante, suele mostrarse amistoso y dispuesto a participar en las actividades de la comunidad. Para Larry, una buena jornada incluye movimiento, sol y la oportunidad de superar una nueva meta."
             ),
             charactersModel(
                 image: "patricio",
+                alias: "Patricio",
                 name: "Patricio",
                 lastName: "Estrella",
                 species: "Estrella de mar",
@@ -109,6 +120,7 @@ class TableViewModel {
             ),
             charactersModel(
                 image: "perlita",
+                alias: "Perlita",
                 name: "Perlita",
                 lastName: "Cangrejo",
                 species: "Ballena",
@@ -117,7 +129,8 @@ class TableViewModel {
             ),
             charactersModel(
                 image: "plankton",
-                name: "Sheldon",
+                alias: "Plankton",
+                name: "Sheldon J.",
                 lastName: "Plankton",
                 species: "Plancton",
                 occupation: "Dueño de restaurante",
@@ -125,8 +138,9 @@ class TableViewModel {
             ),
             charactersModel(
                 image: "señora_puff",
-                name: "Señora Puff",
-                lastName: nil,
+                alias: "Señora Puff",
+                name: "Virginia",
+                lastName: "Puff",
                 species: "Pez globo",
                 occupation: "Instructora de conducción",
                 description: "La señora Puff es un pez globo que trabaja como instructora en una escuela de conducción de Fondo de Bikini. Enseña a sus alumnos a manejar botes y procura mantener la calma incluso en las lecciones más complicadas. Su mayor desafío es Bob Esponja, cuyo nerviosismo al volante convierte muchos exámenes en auténticos desastres.\nCuando se asusta o se encuentra bajo demasiada presión, se infla como una reacción característica de su especie. Aunque las clases de Bob Esponja ponen a prueba su paciencia, sigue intentando cumplir con su trabajo. Su vida cotidiana combina el deseo de tranquilidad con las consecuencias impredecibles de tener al alumno más entusiasta de la ciudad."
@@ -151,7 +165,8 @@ class TableViewModel {
             filterCharacters = characters.filter{
                 $0.fullName.localizedStandardContains(query) ||
                 $0.species.localizedStandardContains(query) ||
-                $0.occupation.localizedStandardContains(query)
+                $0.occupation.localizedStandardContains(query) ||
+                $0.alias.localizedStandardContains(query)
             }
         }
     }
