@@ -89,4 +89,5 @@ class CharacterTableViewCell: UITableViewCell {
         detailLabel.text = "\(character.species) · \(character.occupation)"
     }
     
+    
 }

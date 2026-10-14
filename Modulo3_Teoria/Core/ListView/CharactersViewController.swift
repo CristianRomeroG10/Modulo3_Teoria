@@ -7,6 +7,8 @@
 
 import UIKit
 
+var favoriteCharacters: [charactersModel] = []
+
 class CharactersViewController: UIViewController {
     
     // MARK: - Outlets
@@ -82,6 +84,27 @@ extension CharactersViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         "Bob Esponja"
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let addFavorite = UIContextualAction(style: .normal, title: "Favorito") { _, _, completion in
+            
+            let character = self.viewModel.characters[indexPath.row]
+            
+            if !favoriteCharacters.contains(where: {$0.alias == character.alias}){
+                favoriteCharacters.append(character)
+            }
+            
+            print("Favoritos guardados: \(favoriteCharacters.count)")
+            completion(true)
+        }
+        
+        addFavorite.image = UIImage(systemName: "heart.fill")
+        addFavorite.backgroundColor = .systemPink
+        
+        let configuration = UISwipeActionsConfiguration(actions: [addFavorite])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
     }
     
 }
